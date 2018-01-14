@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="snoobi" translate="label" type="text" sortOrder="500" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Snoobi Web Store Tracking</label>
+            <tab>sales</tab>
+            <resource>Snoobi_Snoobi::snoobi</resource>
+            <group id="analytics" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Snoobi Analytics</label>
+                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="account" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Snoobi account ID</label>
+                    <comment>This is your id you received from Snoobi, in the form of yoursite_nl.</comment>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
+                </field>
+                <field id="anchors" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Anchors</label>
+                    <comment>If your website uses html-anchors to navigate on a page, set this on. Then Snoobi will automatically collect statistics from any anchor-click as well.</comment>
+                    <source_model>Snoobi\Snoobi\Model\Config\Source\Anchors</source_model>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
+                </field>
+                <field id="cookies" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cookies</label>
+                    <comment>Here you can select to not let Snoobi use any cookies. Snoobi will be fully functional, with the exception of detecting repeat visitors. We recommend to keep this ON. As an alternative, you can use Cookies = 1st which will only place first-party cookies.</comment>
+                    <source_model>Snoobi\Snoobi\Model\Config\Source\Cookies</source_model>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
